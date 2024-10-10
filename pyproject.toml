@@ -4,6 +4,7 @@ version = "0.0.1"
 description = "Automatic Feature Selection with Machine Learning for Machine Learning Classification and Regression models"
 authors = ["Yannick Flores <yannick.flores1992@gmail.com>"]
 readme = "README.md"
+exclude = ["tests", "docs"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
