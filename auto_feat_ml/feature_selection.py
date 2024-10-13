@@ -169,7 +169,7 @@ class FeatureSelection:
         if self.feature_object.features_to_force is None:
             pipeline_steps = common_steps + [
                 ("scaler", StandardScaler()),
-                ("regressor", RandomForestRegressor(n_estimators=100)),
+                ("regressor", RandomForestRegressor(max_depth=3, n_estimators=500)),
             ]
         else:
             feature_selection_pipe = Pipeline(common_steps)
@@ -194,7 +194,7 @@ class FeatureSelection:
                 ),
                 ("scaler", StandardScaler()),
                 ("duplicated", DropDuplicateFeatures()),
-                ("regressor", RandomForestRegressor(n_estimators=100)),
+                ("regressor", RandomForestRegressor(max_depth=3, n_estimators=500)),
             ]
 
         return Pipeline(pipeline_steps)
@@ -215,7 +215,7 @@ class FeatureSelection:
         if self.feature_object.features_to_force is None:
             pipeline_steps = common_steps + [
                 ("scaler", StandardScaler()),
-                ("regressor", RandomForestClassifier(n_estimators=100)),
+                ("classifier", RandomForestClassifier(max_depth=3, n_estimators=500)),
             ]
         else:
             feature_selection_pipe = Pipeline(common_steps)
@@ -240,7 +240,7 @@ class FeatureSelection:
                 ),
                 ("scaler", StandardScaler()),
                 ("duplicated", DropDuplicateFeatures()),
-                ("regressor", RandomForestClassifier(n_estimators=100)),
+                ("classifier", RandomForestClassifier(max_depth=3, n_estimators=500)),
             ]
 
         return Pipeline(pipeline_steps)
@@ -260,7 +260,7 @@ class FeatureSelection:
                 {
                     "selector": [
                         RFE(
-                            estimator=RandomForestRegressor(),
+                            estimator=RandomForestRegressor(max_depth=3, n_estimators=500),
                             step=self.feature_object.step_rfe,
                         )
                     ],
@@ -285,7 +285,7 @@ class FeatureSelection:
                 },
                 {
                     "feats__feature_selection_pipeline__selector": [
-                        RFE(estimator=RandomForestRegressor())
+                        RFE(estimator=RandomForestRegressor(max_depth=3, n_estimators=500))
                     ],
                     "feats__feature_selection_pipeline__selector__n_features_to_select": self.feature_object.list_number_feature_to_select,
                     "scaler": [None, StandardScaler()],
@@ -311,7 +311,7 @@ class FeatureSelection:
                 {
                     "selector": [
                         RFE(
-                            estimator=RandomForestClassifier(),
+                            estimator=RandomForestClassifier(max_depth=3, n_estimators=500),
                             step=self.feature_object.step_rfe,
                         )
                     ],
@@ -336,7 +336,7 @@ class FeatureSelection:
                 },
                 {
                     "feats__feature_selection_pipeline__selector": [
-                        RFE(estimator=RandomForestClassifier())
+                        RFE(estimator=RandomForestClassifier(max_depth=3, n_estimators=500))
                     ],
                     "feats__feature_selection_pipeline__selector__n_features_to_select": self.feature_object.list_number_feature_to_select,
                     "scaler": [None, StandardScaler()],

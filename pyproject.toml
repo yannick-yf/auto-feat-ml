@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "auto-feat-ml"
-version = "0.0.1"
+version = "0.0.2"
 description = "Automatic Feature Selection with Machine Learning for Machine Learning Classification and Regression models"
 authors = ["Yannick Flores <yannick.flores1992@gmail.com>"]
 readme = "README.md"

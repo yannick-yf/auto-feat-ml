@@ -1,0 +1,4 @@
+# TODO: 
+Improve performance
+Add perforamnce test on open data such as irirs or titanic files
+Add feature in check whebn number of feature selected is higher than the total of features from the training dataset
